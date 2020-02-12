@@ -2,8 +2,6 @@ var audioContext;
 var stream;
 var pitch;
 
-var noteNames = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-
 setup();
 
 async function setup() {
@@ -19,19 +17,16 @@ function startPitch(stream, audioContext) {
 
 function getPitch() {
   pitch.getPitch((err, frequency) => {
-    if(frequency) {
-      document.getElementById("key").textContent = noteNames[noteFromPitch(Number(frequency.toFixed(4))) % 12];
+    if(frequency){
+      var note = new Note();
+      note.setData(frequency);
+      document.getElementById("key").textContent = note.noteName;
     } else {
       document.getElementById("key").textContent = "No pitch detected";
     }
     audioContext.resume();
     window.requestAnimationFrame(getPitch);
   });
-}
-
-function noteFromPitch( frequency ) {
-var noteNum = 12 * (Math.log( frequency / 440 )/Math.log(2) );
-return Math.round( noteNum ) + 69;
 }
 
 //var synth = new Tone.FMSynth().toMaster()
