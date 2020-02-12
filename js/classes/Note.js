@@ -11,7 +11,7 @@ function Note(){
 
   this._estimateFrequency = function(frequency){
     var estimation = Number(frequency.toFixed(2));
-    for(var n = 0; n < 11; n++){
+    for(var n = 0; n < 12; n++){
       for(var f = 0; f < 4; f++){
         if(estimation >= noteData[n].frequencies[f] && estimation < noteData[n + 1].frequencies[f]){
           if(Math.abs(estimation - noteData[n].frequencies[f]) <= Math.abs(estimation - noteData[n + 1].frequencies[f])){
@@ -26,7 +26,12 @@ function Note(){
   }
 
   this._estimateNoteName = function(frequency){
-    return noteData[Math.floor(frequency % 12)].name;
+    for(var n = 0; n < 12; n++){
+      if(noteData[n].frequencies.occurs(frequency) > 0){
+        return noteData[n].name;
+      }
+    }
+    return "Unknown";
   }
 }
 
@@ -37,8 +42,7 @@ const noteData = [
       130.82,
       261.63,
       523.25,
-      1046.5,
-      2093
+      1046.5
     ]
   },
   {
@@ -138,6 +142,12 @@ const noteData = [
       493.88,
       987.77,
       1975.53
+    ]
+  },
+  {
+    "name":"C",
+    "frequencies":[
+      2093
     ]
   }
 ]
