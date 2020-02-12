@@ -13,7 +13,7 @@ function Note(){
     var estimation = Number(frequency.toFixed(2));
     for(var n = 0; n < 12; n++){
       for(var f = 0; f < 4; f++){
-        if(estimation >= noteData[n].frequencies[f] && estimation < noteData[n + 1].frequencies[f]){
+        if(estimation >= noteData[n].frequencies[f] && estimation <= noteData[n + 1].frequencies[f]){
           if(Math.abs(estimation - noteData[n].frequencies[f]) <= Math.abs(estimation - noteData[n + 1].frequencies[f])){
             return noteData[n].frequencies[f];
           } else {
