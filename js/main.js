@@ -5,7 +5,7 @@ var pitch;
 setup();
 
 async function setup() {
-  audioContext = new AudioContext();
+  audioContext = Tone.context;
   stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
   audioContext.resume();
   startPitch(stream, audioContext);
@@ -18,7 +18,7 @@ function startPitch(stream, audioContext) {
 function getPitch() {
   pitch.getPitch((err, frequency) => {
     if(frequency){
-      var note = new Note();
+      note = new Note();
       note.setData(frequency);
       document.getElementById("key").textContent = note.noteName;
       return;

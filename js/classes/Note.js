@@ -22,6 +22,14 @@ function Note(){
         }
       }
     }
+    if(estimation < noteData[0].frequencies[0]){
+      console.log("Frequency Too Low: " + estimation);
+      return noteData[0].frequencies[0];
+    }
+    if(estimation > noteData[12].frequencies[0]){
+      console.log("Frequency Too High: " + estimation);
+      return noteData[12].frequencies[0];
+    }
     return estimation;
   }
 
