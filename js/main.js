@@ -7,6 +7,7 @@ setup();
 async function setup() {
   audioContext = new AudioContext();
   stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+  audioContext.resume();
   startPitch(stream, audioContext);
 }
 
@@ -20,6 +21,7 @@ function getPitch() {
       var note = new Note();
       note.setData(frequency);
       document.getElementById("key").textContent = note.noteName;
+      return;
     } else {
       document.getElementById("key").textContent = "_";
     }

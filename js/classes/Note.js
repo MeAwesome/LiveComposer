@@ -4,7 +4,7 @@ function Note(){
   this.noteName = undefined;
 
   this.setData = function(frequency){
-    this.realFrequency = Math.round(12 * (Math.log(frequency / 440) / Math.log(2))) + 69;
+    this.realFrequency = frequency;
     this.estimatedFrequency = this._estimateFrequency(this.realFrequency);
     this.noteName = this._estimateNoteName(this.estimatedFrequency);
   }
@@ -26,7 +26,7 @@ function Note(){
   }
 
   this._estimateNoteName = function(frequency){
-    return noteData[frequency % 12].name;
+    return noteData[Math.floor(frequency % 12)].name;
   }
 }
 
