@@ -1,21 +1,20 @@
-var audioContext;
-var stream;
-var pitch;
+var audioContext = undefined;
+var stream = undefined;
+var pitch = undefined;
 
 setup();
 
-async function setup() {
+async function setup(){
   audioContext = Tone.context;
-  stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+  stream = await navigator.mediaDevices.getUserMedia({
+    audio:true,
+    video:false
+  });
   audioContext.resume();
-  startPitch(stream, audioContext);
-}
-
-function startPitch(stream, audioContext) {
   pitch = ml5.pitchDetection("https://cdn.jsdelivr.net/gh/ml5js/ml5-data-and-models/models/pitch-detection/crepe/", audioContext , stream, getPitch);
 }
 
-function getPitch() {
+function getPitch(){
   pitch.getPitch((err, frequency) => {
     if(frequency){
       note = new Note();
@@ -28,3 +27,21 @@ function getPitch() {
   });
   window.requestAnimationFrame(getPitch);
 }
+/*
+const options = { probabilityThreshold: 0.7 };
+const classifier = ml5.soundClassifier('SpeechCommands18w', options, modelReady);
+
+function modelReady() {
+  // classify sound
+  classifier.classify(gotResult);
+}
+
+function gotResult(error, result) {
+  if (error) {
+    console.log(error);
+    return;
+  }
+  // log the result
+  console.log(result);
+}
+*/
