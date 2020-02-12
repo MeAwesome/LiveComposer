@@ -7,7 +7,6 @@ setup();
 async function setup() {
   audioContext = new AudioContext();
   stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
-  audioContext.resume();
   startPitch(stream, audioContext);
 }
 
@@ -22,11 +21,10 @@ function getPitch() {
       note.setData(frequency);
       document.getElementById("key").textContent = note.noteName;
     } else {
-      document.getElementById("key").textContent = "No pitch detected";
+      document.getElementById("key").textContent = "_";
     }
-    audioContext.resume();
-    window.requestAnimationFrame(getPitch);
   });
+  window.requestAnimationFrame(getPitch);
 }
 
 //var synth = new Tone.FMSynth().toMaster()
