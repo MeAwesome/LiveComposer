@@ -19,10 +19,12 @@ function getPitch(){
     if(frequency){
       note = new Note();
       note.setData(frequency);
-      document.getElementById("key").textContent = note.noteName;
+      document.getElementById("freq").textContent = "Current Frequency: " + note.realFrequency + "hz";
+      document.getElementById("key").textContent = "Current Guessed Note: " + note.noteName;
       return;
     } else {
-      document.getElementById("key").textContent = "_";
+      document.getElementById("freq").textContent = "Current Frequency: _";
+      document.getElementById("key").textContent = "Current Guessed Note: _";
     }
   });
   window.requestAnimationFrame(getPitch);
