@@ -38,12 +38,14 @@ function getPitch(){
 window.onblur = function(){
   audioContext.suspend().then(() => {
     windowFocused = false;
+    console.log("user away");
   });
 }
 
 window.onfocus = function(){
   audioContext.resume().then(() => {
     windowFocused = true;
+    console.log("user back");
     window.requestAnimationFrame(getPitch);
   });
 }
