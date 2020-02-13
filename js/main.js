@@ -3,6 +3,8 @@ var stream = undefined;
 var pitch = undefined;
 var windowFocused = true;
 var volumeLevel = undefined;
+var prevVolumeLevel = undefined;
+const volumeLevelDistance = 10;
 
 setup();
 
@@ -29,7 +31,10 @@ async function setup(){
         values += (array[i]);
       }
       volumeLevel = Math.round(values / length);
-      if(volumeLevel > 40){
+      if(prevVolumeLevel == undefined){
+        prevVolumeLevel = volumeLevel;
+      }
+      if(volumeLevel > 40 && (volumeLevel - prevVolumeLevel) > volumeLevelDistance){
         console.log(volumeLevel);
       }
   }
