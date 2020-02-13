@@ -36,14 +36,16 @@ function getPitch(){
 }
 
 window.onblur = function(){
-  audioContext.suspend();
-  windowFocused = false;
+  audioContext.suspend().then(() => {
+    windowFocused = false;
+  });
 }
 
 window.onfocus = function(){
-  audioContext.resume();
-  windowFocused = true;
-  window.requestAnimationFrame(getPitch);
+  audioContext.resume().then(() => {
+    windowFocused = true;
+    window.requestAnimationFrame(getPitch);
+  });
 }
 /*
 const options = { probabilityThreshold: 0.7 };
