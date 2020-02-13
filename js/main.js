@@ -34,7 +34,7 @@ async function setup(){
       if(prevVolumeLevel == undefined){
         prevVolumeLevel = volumeLevel;
       }
-      if(volumeLevel > 40 && (volumeLevel - prevVolumeLevel) > volumeLevelDistance){
+      if(volumeLevel > 30 && (volumeLevel - prevVolumeLevel) > volumeLevelDistance){
         console.log(volumeLevel);
       }
       prevVolumeLevel = volumeLevel;
