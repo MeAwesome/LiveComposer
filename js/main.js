@@ -2,6 +2,7 @@ var audioContext = undefined;
 var stream = undefined;
 var pitch = undefined;
 var windowFocused = true;
+var volumeLevel = undefined;
 
 setup();
 
@@ -27,9 +28,9 @@ async function setup(){
       for (var i = 0; i < length; i++) {
         values += (array[i]);
       }
-      var average = Math.round(values / length);
-      if(average > 40){
-        console.log(average);
+      volumeLevel = Math.round(values / length);
+      if(volumeLevel > 40){
+        console.log(volumeLevel);
       }
   }
   audioContext.resume();
@@ -49,6 +50,7 @@ function getPitch(){
       document.getElementById("estfreq").textContent = "Current Guessed Frequency: _";
       document.getElementById("key").textContent = "Current Guessed Note: _";
     }
+    document.getElementById("vol").textContent = "Current Volume: " + volumeLevel;
   });
   if(windowFocused == true){
     window.requestAnimationFrame(getPitch);
