@@ -30,7 +30,7 @@ function getPitch(){
       document.getElementById("key").textContent = "Current Guessed Note: _";
     }
   });
-  if(windowFocused){
+  if(windowFocused == true){
     window.requestAnimationFrame(getPitch);
   }
 }
