@@ -56,11 +56,11 @@ function getPitch(){
 }
 
 window.onblur = function(){
-  audioContext.suspend();
-  audioContext.suspend().then(() => {
-    windowFocused = false;
-    console.log("user away");
-  });
+  //audioContext.suspend();
+  //audioContext.suspend().then(() => {
+    //windowFocused = false;
+    //console.log("user away");
+  //});
 }
 
 window.onfocus = function(){
