@@ -27,8 +27,10 @@ async function setup(){
       for (var i = 0; i < length; i++) {
         values += (array[i]);
       }
-      var average = values / length;
-    console.log(Math.round(average));
+      var average = Math.round(values / length);
+      if(average > 40){
+        console.log(average);
+      }
   }
   audioContext.resume();
   pitch = ml5.pitchDetection("https://cdn.jsdelivr.net/gh/ml5js/ml5-data-and-models/models/pitch-detection/crepe/", audioContext , stream, getPitch);
