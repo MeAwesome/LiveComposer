@@ -11,6 +11,26 @@ async function setup(){
     audio:true,
     video:false
   });
+  analyser = audioContext.createAnalyser();
+  microphone = audioContext.createMediaStreamSource(stream);
+  javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
+  analyser.smoothingTimeConstant = 0.8;
+  analyser.fftSize = 1024;
+  microphone.connect(analyser);
+  analyser.connect(javascriptNode);
+  javascriptNode.connect(audioContext.destination);
+  javascriptNode.onaudioprocess = function() {
+      var array = new Uint8Array(analyser.frequencyBinCount);
+      analyser.getByteFrequencyData(array);
+      var values = 0;
+      var length = array.length;
+      for (var i = 0; i < length; i++) {
+        values += (array[i]);
+      }
+      var average = values / length;
+    console.log(Math.round(average));
+  }
+  })
   audioContext.resume();
   pitch = ml5.pitchDetection("https://cdn.jsdelivr.net/gh/ml5js/ml5-data-and-models/models/pitch-detection/crepe/", audioContext , stream, getPitch);
 }
