@@ -35,6 +35,7 @@ function getPitch(){
 }
 
 window.onblur = function(){
+  audioContext.suspend();
   audioContext.suspend().then(() => {
     windowFocused = false;
     console.log("user away");
@@ -42,6 +43,7 @@ window.onblur = function(){
 }
 
 window.onfocus = function(){
+  audioContext.resume();
   audioContext.resume().then(() => {
     windowFocused = true;
     console.log("user back");
