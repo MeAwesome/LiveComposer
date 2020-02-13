@@ -4,7 +4,7 @@ var pitch = undefined;
 var windowFocused = true;
 var volumeLevel = undefined;
 var prevVolumeLevel = undefined;
-const volumeLevelDistance = 5;
+const volumeLevelDistance = 3;
 
 setup();
 
