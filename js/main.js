@@ -36,18 +36,16 @@ function getPitch(){
 }
 
 window.onblur = function(){
-  audioContext.suspend().then(() => {
+  audioContext.close().then(() => {
     windowFocused = false;
     console.log("user away");
   });
 }
 
 window.onfocus = function(){
-  audioContext.resume().then(() => {
-    windowFocused = true;
-    console.log("user back");
-    window.requestAnimationFrame(getPitch);
-  });
+  windowFocused = true;
+  console.log("user back");
+  setup();
 }
 /*
 const options = { probabilityThreshold: 0.7 };
