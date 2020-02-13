@@ -17,17 +17,13 @@ async function setup(){
 
 function getPitch(){
   pitch.getPitch((err, frequency) => {
-    if(err){
-      console.error(err);
-    }
-    if(frequency){
+    if(frequency != null){
       note = new Note();
       note.setData(frequency);
       document.getElementById("freq").textContent = "Current Frequency: " + note.realFrequency + "hz";
       document.getElementById("estfreq").textContent = "Current Guessed Frequency: " + note.estimatedFrequency + "hz";
       document.getElementById("key").textContent = "Current Guessed Note: " + note.noteName;
     } else {
-      console.log(frequency);
       document.getElementById("freq").textContent = "Current Frequency: _";
       document.getElementById("estfreq").textContent = "Current Guessed Frequency: _";
       document.getElementById("key").textContent = "Current Guessed Note: _";
