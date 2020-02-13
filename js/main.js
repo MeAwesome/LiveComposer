@@ -36,7 +36,7 @@ function getPitch(){
 }
 
 window.onblur = function(){
-  audioContext.pause();
+  audioContext.suspend();
   windowFocused = false;
 }
 
