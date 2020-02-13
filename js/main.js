@@ -4,7 +4,10 @@ var pitch = undefined;
 var windowFocused = true;
 var volumeLevel = undefined;
 var prevVolumeLevel = undefined;
+var hitDetected = false;
 const volumeLevelDistance = 3;
+
+var notesHit = [];
 
 setup();
 
@@ -35,7 +38,10 @@ async function setup(){
         prevVolumeLevel = volumeLevel;
       }
       if(volumeLevel > prevVolumeLevel && (volumeLevel - prevVolumeLevel) >= volumeLevelDistance){
+        hitDetected = true;
         console.log(volumeLevel);
+      } else {
+        hitDetected = false;
       }
       prevVolumeLevel = volumeLevel;
   }
@@ -51,12 +57,17 @@ function getPitch(){
       document.getElementById("freq").textContent = "Current Frequency: " + note.realFrequency + "hz";
       document.getElementById("estfreq").textContent = "Current Guessed Frequency: " + note.estimatedFrequency + "hz";
       document.getElementById("key").textContent = "Current Guessed Note: " + note.noteName;
+      if(hitDetected == true){
+        notesHit.push(note.noteName);
+      }
+      document.getElementById("noteshit").textContent = "Notes Hit: " + notesHit;
     } else {
       document.getElementById("freq").textContent = "Current Frequency: _";
       document.getElementById("estfreq").textContent = "Current Guessed Frequency: _";
       document.getElementById("key").textContent = "Current Guessed Note: _";
     }
     document.getElementById("vol").textContent = "Current Volume: " + volumeLevel;
+    document.getElementById("hit").textContent = "Hit Detected: " + hitDetected;
   });
   if(windowFocused == true){
     window.requestAnimationFrame(getPitch);
