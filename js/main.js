@@ -30,7 +30,6 @@ async function setup(){
       var average = values / length;
     console.log(Math.round(average));
   }
-  })
   audioContext.resume();
   pitch = ml5.pitchDetection("https://cdn.jsdelivr.net/gh/ml5js/ml5-data-and-models/models/pitch-detection/crepe/", audioContext , stream, getPitch);
 }
