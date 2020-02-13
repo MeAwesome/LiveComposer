@@ -1,6 +1,7 @@
 var audioContext = undefined;
 var stream = undefined;
 var pitch = undefined;
+var windowFocused = true;
 
 setup();
 
@@ -29,6 +30,19 @@ function getPitch(){
       document.getElementById("key").textContent = "Current Guessed Note: _";
     }
   });
+  if(windowFocused){
+    window.requestAnimationFrame(getPitch);
+  }
+}
+
+window.onblur = function(){
+  audioContext.pause();
+  windowFocused = false;
+}
+
+window.onfocus = function(){
+  audioContext.resume();
+  windowFocused = true;
   window.requestAnimationFrame(getPitch);
 }
 /*
