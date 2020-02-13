@@ -39,7 +39,6 @@ async function setup(){
       }
       if(volumeLevel > prevVolumeLevel && (volumeLevel - prevVolumeLevel) >= volumeLevelDistance){
         hitDetected = true;
-        console.log(volumeLevel);
       } else {
         hitDetected = false;
       }
@@ -75,11 +74,11 @@ function getPitch(){
 }
 
 window.onblur = function(){
-  //audioContext.suspend();
-  //audioContext.suspend().then(() => {
-    //windowFocused = false;
-    //console.log("user away");
-  //});
+  audioContext.suspend();
+  audioContext.suspend().then(() => {
+    windowFocused = false;
+    console.log("user away");
+  });
 }
 
 window.onfocus = function(){
