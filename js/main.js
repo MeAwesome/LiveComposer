@@ -49,6 +49,7 @@ window.onfocus = function(){
   audioContext.resume().then(() => {
     windowFocused = true;
     console.log("user back");
+    window.onblur = undefined;
     window.requestAnimationFrame(getPitch);
   });
 }
