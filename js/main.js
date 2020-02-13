@@ -46,12 +46,11 @@ window.onblur = function(){
 }
 
 window.onfocus = function(){
-  window.location.reload();
-  //audioContext.resume().then(() => {
-    //windowFocused = true;
-    //console.log("user back");
-    //window.requestAnimationFrame(getPitch);
-  //});
+  audioContext.resume().then(() => {
+    windowFocused = true;
+    console.log("user back");
+    window.requestAnimationFrame(getPitch);
+  });
 }
 /*
 const options = { probabilityThreshold: 0.7 };
