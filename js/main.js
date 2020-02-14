@@ -5,7 +5,7 @@ var windowFocused = true;
 var volumeLevel = undefined;
 var prevVolumeLevel = undefined;
 var hitDetected = false;
-const volumeLevelDistance = 3;
+const volumeLevelDistance = 5;
 
 var notesHit = [];
 
