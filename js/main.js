@@ -89,10 +89,11 @@ function gotResult(error, result) {
     console.log(error);
     return;
   }
-  // log the result
   console.log(result);
-  if(result[0].label == "Piano" && result[0].confidence > 0.5){
-    wasInstrument = true;
+  for(var i = 0; i < result.length; i++){
+    if(result[i].label == "Piano" && result[i].confidence > 0.5){
+      wasInstrument = true;
+    }
   }
 }
 
