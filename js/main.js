@@ -39,6 +39,9 @@ async function setup(){
       }
       if(volumeLevel > prevVolumeLevel && (volumeLevel - prevVolumeLevel) >= volumeLevelDistance){
         hitDetected = true;
+        setTimeout(() => {
+          hitDetected = false;
+        }, 500);
       }
       prevVolumeLevel = volumeLevel;
   }
