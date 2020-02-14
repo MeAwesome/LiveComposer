@@ -76,7 +76,7 @@ function getPitch(){
 }
 
 const options = { probabilityThreshold: 0.7 };
-const classifier = ml5.soundClassifier('/model.json', options, modelReady);
+const classifier = ml5.soundClassifier('https://teachablemachine.withgoogle.com/models/cKo_QpBU/', options, modelReady);
 
 function modelReady() {
   // classify sound
