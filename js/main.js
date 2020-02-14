@@ -39,8 +39,6 @@ async function setup(){
       }
       if(volumeLevel > prevVolumeLevel && (volumeLevel - prevVolumeLevel) >= volumeLevelDistance){
         hitDetected = true;
-      } else {
-        hitDetected = false;
       }
       prevVolumeLevel = volumeLevel;
   }
@@ -58,6 +56,7 @@ function getPitch(){
       document.getElementById("key").textContent = "Current Guessed Note: " + note.noteName;
       if(hitDetected == true){
         notesHit.push(note.noteName);
+        hitDetected = false;
       }
       document.getElementById("noteshit").textContent = "Notes Hit: " + notesHit;
     } else {
