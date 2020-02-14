@@ -5,6 +5,7 @@ var windowFocused = true;
 var volumeLevel = undefined;
 var prevVolumeLevel = undefined;
 var hitDetected = false;
+var wasInstrument = false;
 const volumeLevelDistance = 5;
 
 var notesHit = [];
@@ -57,9 +58,9 @@ function getPitch(){
       document.getElementById("freq").textContent = "Current Frequency: " + note.realFrequency + "hz";
       document.getElementById("estfreq").textContent = "Current Guessed Frequency: " + note.estimatedFrequency + "hz";
       document.getElementById("key").textContent = "Current Guessed Note: " + note.noteName;
-      if(hitDetected == true){
+      if(wasInstrument){
         notesHit.push(note.noteName);
-        hitDetected = false;
+        wasInstrument = false;
       }
       document.getElementById("noteshit").textContent = "Notes Hit: " + notesHit;
     } else {
@@ -90,6 +91,9 @@ function gotResult(error, result) {
   }
   // log the result
   console.log(result);
+  if(result[0].label == "Piano" && result[0].confidence > 0.5){
+    wasInstrument = true;
+  }
 }
 
 window.onblur = function(){
