@@ -84,7 +84,7 @@ function getPitch(){
 }
 
 const options = { probabilityThreshold: 0.5 };
-const classifier = ml5.soundClassifier('https://teachablemachine.withgoogle.com/models/cKo_QpBU/model.json', options, modelReady);
+const classifier = ml5.soundClassifier('https://teachablemachine.withgoogle.com/models/AdICwmWf/model.json', options, modelReady);
 
 function modelReady() {
   // classify sound
