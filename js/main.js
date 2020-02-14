@@ -41,7 +41,7 @@ async function setup(){
         hitDetected = true;
         setTimeout(() => {
           hitDetected = false;
-        }, 500);
+        }, 250);
       }
       prevVolumeLevel = volumeLevel;
   }
