@@ -71,7 +71,7 @@ function getPitch(){
       document.getElementById("key").textContent = "Current Guessed Note: _";
       recentNotes.push(" ");
     }
-    if(recentNotes.length > 20){
+    if(recentNotes.length > 10){
       recentNotes.shift();
     }
     document.getElementById("vol").textContent = "Current Volume: " + volumeLevel;
