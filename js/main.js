@@ -9,6 +9,7 @@ var wasInstrument = false;
 const volumeLevelDistance = 5;
 
 var notesHit = [];
+var recentNotes = [];
 
 setup();
 
@@ -63,13 +64,19 @@ function getPitch(){
         wasInstrument = false;
       }
       document.getElementById("noteshit").textContent = "Notes Hit: " + notesHit;
+      recentNotes.push(note.noteName);
     } else {
       document.getElementById("freq").textContent = "Current Frequency: _";
       document.getElementById("estfreq").textContent = "Current Guessed Frequency: _";
       document.getElementById("key").textContent = "Current Guessed Note: _";
+      recentNotes.push(" ");
+    }
+    if(recentNotes.length > 20){
+      recentNotes.shift();
     }
     document.getElementById("vol").textContent = "Current Volume: " + volumeLevel;
     document.getElementById("hit").textContent = "Hit Detected: " + hitDetected;
+    document.getElementById("recnotes").textContent = "Recent Notes: " + recentNotes;
   });
   if(windowFocused == true){
     window.requestAnimationFrame(getPitch);
