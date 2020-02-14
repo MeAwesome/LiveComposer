@@ -97,7 +97,7 @@ function gotResult(error, result) {
     return;
   }
   console.log(result);
-  if(result[0].label == "Piano"){
+  if(result[0].label == "Marimba"){
     wasInstrument = true;
   }
 }
