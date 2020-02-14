@@ -90,10 +90,8 @@ function gotResult(error, result) {
     return;
   }
   console.log(result);
-  for(var i = 0; i < result.length; i++){
-    if(result[i].label == "Piano" && result[i].confidence > 0.5){
-      wasInstrument = true;
-    }
+  if(result[0].label == "Piano" && result[0].confidence > 0.5){
+    wasInstrument = true;
   }
 }
 
