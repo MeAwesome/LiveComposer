@@ -75,6 +75,23 @@ function getPitch(){
   }
 }
 
+const options = { probabilityThreshold: 0.7 };
+const classifier = ml5.soundClassifier('/model.json', options, modelReady);
+
+function modelReady() {
+  // classify sound
+  classifier.classify(gotResult);
+}
+
+function gotResult(error, result) {
+  if (error) {
+    console.log(error);
+    return;
+  }
+  // log the result
+  console.log(result);
+}
+
 window.onblur = function(){
   audioContext.suspend();
   audioContext.suspend().then(() => {
