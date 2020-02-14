@@ -76,7 +76,7 @@ function getPitch(){
   }
 }
 
-const options = { probabilityThreshold: 0 };
+const options = { probabilityThreshold: 0.5 };
 const classifier = ml5.soundClassifier('https://teachablemachine.withgoogle.com/models/cKo_QpBU/model.json', options, modelReady);
 
 function modelReady() {
@@ -90,7 +90,7 @@ function gotResult(error, result) {
     return;
   }
   console.log(result);
-  if(result[0].label == "Piano" && result[0].confidence > 0.5){
+  if(result[0].label == "Piano"){
     wasInstrument = true;
   }
 }
